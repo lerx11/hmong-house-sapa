@@ -68,16 +68,16 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:gap-12">
-          {/* Contact info + WhatsApp CTA */}
+        <div className="mt-12 grid items-stretch gap-8 lg:grid-cols-2 lg:gap-12">
+          {/* Contact info + Google Maps embed */}
           <motion.div
             variants={reveal}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
-            className="flex flex-col"
+            className="flex h-full flex-col"
           >
-            <div className="card-warm flex flex-1 flex-col p-7 md:p-9">
+            <div className="card-warm flex h-full flex-1 flex-col p-7 md:p-9">
               <h3 className="font-display text-2xl text-ink">
                 {siteConfig.businessName}
               </h3>
@@ -109,9 +109,12 @@ export default function Contact() {
                 </div>
               </dl>
 
-              {/* Google Maps embed + Get Directions */}
-              <div className="mt-7">
-                <div className="overflow-hidden rounded-2xl border border-ink/10 bg-rice/10">
+              {/* Plain-text address + Google Maps embed (map flexes to match form height on desktop) */}
+              <div className="mt-7 flex min-h-0 flex-1 flex-col">
+                <p className="mb-2 text-sm text-ink/60">
+                  Ta Van Village, Sapa, Vietnam
+                </p>
+                <div className="flex min-h-0 flex-1 overflow-hidden rounded-xl border border-ink/10 bg-rice/10">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.46151840622!2d103.89562699999999!3d22.2983789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x36cd470db32c8e35%3A0x762527ed105c3275!2sHmong%20house%20Sapa!5e0!3m2!1sru!2s!4v1787077070665!5m2!1sru!2s"
                     width="600"
@@ -120,18 +123,9 @@ export default function Contact() {
                     allowFullScreen
                     referrerPolicy="strict-origin-when-cross-origin"
                     title="Hmong House Sapa on Google Maps"
-                    className="block h-[250px] w-full border-0 sm:h-[320px] md:h-[400px]"
+                    className="block h-[250px] w-full flex-1 min-h-[250px] border-0 sm:h-[320px] md:h-[400px]"
                   />
                 </div>
-                <a
-                  href={siteConfig.maps.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-outline mt-3 w-full sm:w-auto"
-                >
-                  <MapPinIcon width={16} height={16} />
-                  {siteConfig.maps.displayText}
-                </a>
               </div>
 
               <a
@@ -169,14 +163,18 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* WhatsApp message form */}
+          {/* WhatsApp message form (equal height to info+map card on desktop) */}
           <motion.div
             variants={reveal}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
+            className="flex h-full flex-col"
           >
-            <form onSubmit={handleSubmit} className="card-warm p-7 md:p-9">
+            <form
+              onSubmit={handleSubmit}
+              className="card-warm flex h-full flex-1 flex-col p-7 md:p-9"
+            >
               <h3 className="font-display text-2xl text-ink">
                 Send us a message
               </h3>
