@@ -1,0 +1,107 @@
+"use client";
+
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { siteConfig } from "@/data/siteConfig";
+import { ValueIcon } from "./Icons";
+
+// Scroll-reveal wrapper used across sections for consistent animation.
+export const reveal = {
+  hidden: { opacity: 0, y: 32 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+export default function About() {
+  const { about } = siteConfig;
+
+  return (
+    <section id="about" className="section">
+      <div className="container-warm">
+        {/* Two-column: photo + story */}
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          {/* Photo column */}
+          <motion.div
+            variants={reveal}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            className="relative"
+          >
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl shadow-lift">
+              <Image
+                src={about.image}
+                alt="Hmong House homestay in Ta Van Village"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+            {/* Decorative gold frame accent */}
+            <div className="absolute -bottom-4 -right-4 -z-10 h-32 w-32 rounded-3xl border border-gold/40 md:h-40 md:w-40" />
+            <div className="absolute -left-3 -top-3 -z-10 h-24 w-24 rounded-2xl bg-rice/15 md:h-28 md:w-28" />
+          </motion.div>
+
+          {/* Story column */}
+          <motion.div
+            variants={reveal}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <span className="eyebrow">{about.eyebrow}</span>
+            <h2 className="mt-4 font-display text-3xl leading-tight text-ink md:text-4xl">
+              {about.title}
+            </h2>
+            <p className="mt-4 text-ink/70 md:text-lg">{about.subtitle}</p>
+
+            <div className="mt-6 space-y-4">
+              {about.story.map((paragraph, i) => (
+                <p key={i} className="text-ink/75">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+
+            {/* Mission callout */}
+            <blockquote className="mt-8 border-l-2 border-gold/60 pl-5 italic text-ink/80">
+              {about.mission}
+            </blockquote>
+          </motion.div>
+        </div>
+
+        {/* Values row */}
+        <motion.div
+          variants={reveal}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mt-16 grid gap-6 md:grid-cols-3 md:mt-20"
+        >
+          {about.values.map((value, i) => (
+            <motion.div
+              key={value.title}
+              variants={reveal}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="card-warm p-7 transition-transform duration-300 hover:-translate-y-1"
+            >
+              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-rice/10 text-rice">
+                <ValueIcon name={value.icon} width={22} height={22} />
+              </div>
+              <h3 className="mt-5 font-display text-xl text-ink">
+                {value.title}
+              </h3>
+              <p className="mt-2 text-sm text-ink/70">{value.text}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
