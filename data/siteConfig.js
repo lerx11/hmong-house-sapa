@@ -34,7 +34,7 @@ export const siteConfig = {
 
   // -------- Google Maps --------
   maps: {
-    link: "https://maps.google.com/?q=Hmong+House+Sapa+Ta+Van",
+    link: "https://maps.app.goo.gl/bZKJbqss59Gs3dor6",
     displayText: "Get Directions",
     embedUrl: "", // TODO: Add Google Maps embed URL
   },
