@@ -95,7 +95,6 @@ export default function Footer() {
                   {siteConfig.whatsappNumber}
                 </a>
               </li>
-              <li>{siteConfig.email}</li>
             </ul>
           </div>
         </motion.div>

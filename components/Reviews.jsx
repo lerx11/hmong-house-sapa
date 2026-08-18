@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { siteConfig } from "@/data/siteConfig";
 import { StarIcon } from "./Icons";
 import { reveal } from "./About";
+import BookingBadge from "./BookingBadge";
 
 // Render 5 stars, filling the first `rating` and dimming the rest.
 function Stars({ rating = 5 }) {
@@ -57,6 +58,11 @@ export default function Reviews() {
             <span className="text-sm text-ink/60">
               · {siteConfig.reviewCount} reviews
             </span>
+          </div>
+
+          {/* Booking.com rating badge */}
+          <div className="mt-4">
+            <BookingBadge />
           </div>
         </motion.div>
 

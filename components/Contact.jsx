@@ -8,6 +8,7 @@ import {
   InstagramIcon,
   FacebookIcon,
   TiktokIcon,
+  MapPinIcon,
 } from "./Icons";
 import { reveal } from "./About";
 
@@ -93,15 +94,9 @@ export default function Contact() {
                   <dt className="text-xs uppercase tracking-wider text-ink/50">
                     WhatsApp
                   </dt>
-                  <dd className="mt-1 text-ink/80">{siteConfig.whatsappNumber}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-wider text-ink/50">
-                    Email
-                  </dt>
                   <dd className="mt-1 text-ink/80">
-                    {/* TODO: replace with real email */}
-                    {siteConfig.email}
+                    {siteConfig.whatsappNumber} ·{" "}
+                    <span className="text-ink/50">primary contact</span>
                   </dd>
                 </div>
                 <div>
@@ -113,6 +108,26 @@ export default function Contact() {
                   </dd>
                 </div>
               </dl>
+
+              {/* Map placeholder + Get Directions */}
+              <div className="mt-7">
+                <div className="relative grid h-40 place-items-center overflow-hidden rounded-2xl border border-ink/10 bg-rice/10 text-rice">
+                  <MapPinIcon width={32} height={32} />
+                  {/* TODO: replace with Google Maps embed via siteConfig.maps.embedUrl */}
+                  <span className="absolute bottom-2 text-xs text-ink/50">
+                    {siteConfig.address}
+                  </span>
+                </div>
+                <a
+                  href={siteConfig.maps.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline mt-3 w-full sm:w-auto"
+                >
+                  <MapPinIcon width={16} height={16} />
+                  {siteConfig.maps.displayText}
+                </a>
+              </div>
 
               <a
                 href={buildWhatsappLink(

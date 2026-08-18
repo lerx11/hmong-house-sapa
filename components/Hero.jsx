@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { siteConfig, buildWhatsappLink } from "@/data/siteConfig";
 import { WhatsAppIcon, ArrowRightIcon, StarIcon } from "./Icons";
+import BookingBadge from "./BookingBadge";
 
 // Placeholder hero image — TODO: replace with a real photo of the Sapa
 // rice terraces / Hmong House, ideally 1920x1280, stored in /public/images/.
@@ -100,6 +101,11 @@ export default function Hero() {
             <WhatsAppIcon width={16} height={16} />
             Book Now
           </a>
+        </motion.div>
+
+        {/* Booking.com rating badge */}
+        <motion.div variants={item} className="mt-8">
+          <BookingBadge />
         </motion.div>
       </motion.div>
 

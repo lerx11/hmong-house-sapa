@@ -27,11 +27,17 @@ export const siteConfig = {
 
   // -------- Contact channels --------
   // TODO: confirm the correct WhatsApp display format (international, no "+").
+  // WhatsApp is the primary contact method (email removed in favour of chat).
   whatsappNumber: "+84359545459",
   whatsappLink: "https://wa.me/84359545459",
-  // TODO: replace with the real booking email address.
-  email: "your-email@example.com",
   address: "Ta Van Village, Sapa, Lào Cai, Vietnam",
+
+  // -------- Google Maps --------
+  maps: {
+    link: "https://maps.google.com/?q=Hmong+House+Sapa+Ta+Van",
+    displayText: "Get Directions",
+    embedUrl: "", // TODO: Add Google Maps embed URL
+  },
 
   // -------- Social profiles --------
   // TODO: replace "#" with the real profile URLs.
@@ -45,6 +51,15 @@ export const siteConfig = {
   rating: "4.95",
   reviewCount: 128, // TODO: sync with real review platform count
 
+  // -------- Booking.com rating badge --------
+  // Visible text is just "Booking.com"; the href opens the full hotel page.
+  booking: {
+    rating: "4.95",
+    reviewCount: "1,398",
+    link: "https://www.booking.com/hotel/vn/h-moong-view-homestay.en-gb.html",
+    displayText: "Booking.com",
+  },
+
   // -------- Accommodation (homestay rooms) --------
   rooms: {
     count: 20,
@@ -56,6 +71,34 @@ export const siteConfig = {
       "Free Wi-Fi in common areas",
       "Home-cooked Hmong meals",
       "Bicycle & motorbike rental",
+    ],
+  },
+
+  // -------- Stay With Us section --------
+  // Detailed homestay content for the dedicated home-page section.
+  stay: {
+    eyebrow: "Stay With Us",
+    title: "Stay With Us",
+    subtitle: "Experience authentic Hmong hospitality",
+    description:
+      "Our homestay features 20 comfortable rooms with stunning mountain views. Wake up to the sight of rice terraces and enjoy traditional home-cooked meals with our family.",
+    priceRange: "400,000 - 1,400,000 VND per night",
+    amenities: [
+      { icon: "mountain", label: "Mountain view" },
+      { icon: "wifi", label: "Free WiFi" },
+      { icon: "shower", label: "Hot shower" },
+      { icon: "coffee", label: "Breakfast included" },
+      { icon: "sun", label: "Terrace" },
+      { icon: "parking", label: "Free parking" },
+      { icon: "users", label: "Family rooms" },
+      { icon: "meal", label: "Traditional meals" },
+    ],
+    // TODO: replace with real room photos in /public/images/rooms/.
+    images: [
+      { src: ph(800, 1000, "Room 1"), alt: "Homestay room with mountain view" },
+      { src: ph(800, 600, "Room 2"), alt: "Cosy twin room at Hmong House" },
+      { src: ph(800, 800, "Room 3"), alt: "Dorm room with rice terrace view" },
+      { src: ph(800, 600, "Room 4"), alt: "Private bathroom and terrace" },
     ],
   },
 

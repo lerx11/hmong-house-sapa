@@ -96,6 +96,15 @@ export function CloseIcon(props) {
   );
 }
 
+export function MapPinIcon(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  );
+}
+
 // Map icon keys (used by About "values") to SVG components.
 export function ValueIcon({ name, ...props }) {
   switch (name) {
@@ -119,6 +128,75 @@ export function ValueIcon({ name, ...props }) {
         <svg {...base} {...props}>
           <circle cx="12" cy="12" r="10" />
           <path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
+// Map icon keys (used by Stay With Us "amenities") to SVG components.
+export function AmenityIcon({ name, ...props }) {
+  switch (name) {
+    case "mountain":
+      return (
+        <svg {...base} {...props}>
+          <path d="M3 20l5-9 4 6 3-4 6 7z" />
+          <path d="M14 4l3 3" />
+        </svg>
+      );
+    case "wifi":
+      return (
+        <svg {...base} {...props}>
+          <path d="M5 12.55a11 11 0 0 1 14 0" />
+          <path d="M8.5 16.1a6 6 0 0 1 7 0" />
+          <path d="M2 8.82a16 16 0 0 1 20 0" />
+          <circle cx="12" cy="20" r="0.5" fill="currentColor" />
+        </svg>
+      );
+    case "shower":
+      return (
+        <svg {...base} {...props}>
+          <path d="M4 4l16 5" />
+          <path d="M7 9v3a5 5 0 0 0 5 5 5 5 0 0 0 5-5V9" />
+          <path d="M8 21l1-2M12 21l1-2M16 21l1-2" />
+        </svg>
+      );
+    case "coffee":
+      return (
+        <svg {...base} {...props}>
+          <path d="M4 8h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z" />
+          <path d="M17 9h2a2 2 0 0 1 0 4h-2" />
+          <path d="M7 2v2M11 2v2" />
+        </svg>
+      );
+    case "sun":
+      return (
+        <svg {...base} {...props}>
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19" />
+        </svg>
+      );
+    case "parking":
+      return (
+        <svg {...base} {...props}>
+          <rect x="4" y="3" width="16" height="18" rx="3" />
+          <path d="M10 8h3a2.5 2.5 0 0 1 0 5h-3V8zm0 0v8" />
+        </svg>
+      );
+    case "users":
+      return (
+        <svg {...base} {...props}>
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+      );
+    case "meal":
+      return (
+        <svg {...base} {...props}>
+          <path d="M5 3v8a2 2 0 0 0 2 2h0V3M7 13v8M9 3v8M3 3v6a2 2 0 0 0 2 2" />
+          <path d="M17 3c-1.5 0-3 1.5-3 4s1.5 4 3 4v10" />
         </svg>
       );
     default:
