@@ -4,6 +4,7 @@ import About from "@/components/About";
 import ToursSection from "@/components/ToursSection";
 import Gallery from "@/components/Gallery";
 import Reviews from "@/components/Reviews";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <ToursSection />
         <Gallery />
         <Reviews />
+        <Contact />
       </main>
     </>
   );
