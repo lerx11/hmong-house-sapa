@@ -474,12 +474,14 @@ export const siteConfig = {
   ],
 
   // -------- Navigation --------
+  // Anchors are root-relative so the links work from any page (e.g. tour pages)
+  // and still scroll smoothly when already on the home page.
   nav: [
-    { label: "About", href: "#about" },
-    { label: "Tours", href: "#tours" },
-    { label: "Gallery", href: "#gallery" },
-    { label: "Reviews", href: "#reviews" },
-    { label: "Contact", href: "#contact" },
+    { label: "About", href: "/#about" },
+    { label: "Tours", href: "/#tours" },
+    { label: "Gallery", href: "/#gallery" },
+    { label: "Reviews", href: "/#reviews" },
+    { label: "Contact", href: "/#contact" },
   ],
 };
 
