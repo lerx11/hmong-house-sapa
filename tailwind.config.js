@@ -30,14 +30,17 @@ module.exports = {
         "3xl": "1.5rem",
       },
       keyframes: {
-        "pulse-ring": {
-          "0%": { transform: "scale(0.9)", opacity: "0.7" },
-          "70%": { transform: "scale(1.4)", opacity: "0" },
-          "100%": { transform: "scale(1.4)", opacity: "0" },
+        // Subtle shadow pulse: a soft green ring expands gently via
+        // box-shadow spread. Nothing is scaled, so the button keeps its
+        // fixed size — only the surrounding shadow breathes.
+        "whatsapp-pulse": {
+          "0%": { boxShadow: "0 0 0 0 rgba(37, 211, 102, 0.45)" },
+          "70%": { boxShadow: "0 0 0 12px rgba(37, 211, 102, 0)" },
+          "100%": { boxShadow: "0 0 0 0 rgba(37, 211, 102, 0)" },
         },
       },
       animation: {
-        "pulse-ring": "pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "whatsapp-pulse": "whatsapp-pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
     },
   },
