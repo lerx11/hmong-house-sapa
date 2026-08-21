@@ -31,14 +31,25 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             className="relative"
           >
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl shadow-lift">
-              <Image
-                src={about.image}
-                alt="Hmong House homestay in Ta Van Village"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
+            <div className="grid aspect-[4/5] w-full grid-cols-2 gap-3 overflow-hidden rounded-3xl shadow-lift">
+              <div className="relative col-span-2 row-span-2 overflow-hidden first:rounded-tl-3xl">
+                <Image
+                  src={about.images[0]}
+                  alt="Hmong House hosts — Su sisters"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 25vw"
+                  className="object-cover transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+              <div className="relative overflow-hidden last:rounded-br-3xl sm:row-span-1">
+                <Image
+                  src={about.images[1]}
+                  alt="Hmong House homestay exterior"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 25vw"
+                  className="object-cover transition-transform duration-500 hover:scale-105"
+                />
+              </div>
             </div>
             {/* Decorative gold frame accent */}
             <div className="absolute -bottom-4 -right-4 -z-10 h-32 w-32 rounded-3xl border border-gold/40 md:h-40 md:w-40" />

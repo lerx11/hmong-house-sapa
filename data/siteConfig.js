@@ -93,12 +93,12 @@ export const siteConfig = {
       { icon: "users", label: "Family rooms" },
       { icon: "meal", label: "Traditional meals" },
     ],
-    // TODO: replace with real room photos in /public/images/rooms/.
     images: [
-      { src: ph(800, 1000, "Room 1"), alt: "Homestay room with mountain view" },
-      { src: ph(800, 600, "Room 2"), alt: "Cosy twin room at Hmong House" },
-      { src: ph(800, 800, "Room 3"), alt: "Dorm room with rice terrace view" },
-      { src: ph(800, 600, "Room 4"), alt: "Private bathroom and terrace" },
+      { src: "/images/rooms/room-1.jpeg", alt: "Room at Hmong House Sapa" },
+      { src: "/images/rooms/room-2.jpeg", alt: "Room with mountain view" },
+      { src: "/images/rooms/room-3.jpeg", alt: "Comfortable bed" },
+      { src: "/images/rooms/room-4.jpeg", alt: "Bathroom" },
+      { src: "/images/rooms/room-5.jpeg", alt: "Balcony view" },
     ],
   },
 
@@ -131,7 +131,15 @@ export const siteConfig = {
         text: "Indigo dyeing, herbal baths, village life — we share our traditions as they really are, not staged for show.",
       },
     ],
-    image: ph(900, 1100, "Hmong House"),
+    images: [
+      "/images/about/su-sisters.jpg",
+      "/images/about/homestay-exterior.jpg",
+    ],
+  },
+
+  // -------- Hero --------
+  hero: {
+    backgroundImage: "/images/hero/hero-bg.jpg",
   },
 
   // -------- Tours --------
@@ -487,16 +495,26 @@ export const siteConfig = {
 
   // -------- Gallery (masonry grid) --------
   gallery: [
-    { src: "/images/tours/hmong-village-1.jpeg", alt: "Hmong village rice terraces" },
-    { src: "/images/tours/hmong-village-2.jpeg", alt: "Trekking through Hmong villages" },
-    { src: "/images/tours/herbal-trekking-1.jpeg", alt: "Red Dao herbal trekking trail" },
-    { src: "/images/tours/herbal-trekking-2.jpeg", alt: "Red Dao village and mountains" },
-    { src: "/images/tours/2d1n-combo-1.jpeg", alt: "Hmong & Red Dao combo tour" },
-    { src: "/images/tours/2d1n-combo-2.jpeg", alt: "Overnight homestay experience" },
-    { src: "/images/tours/camping-trek-1.jpeg", alt: "Camping in Sapa mountains" },
-    { src: "/images/tours/camping-trek-2.jpeg", alt: "Sunset at high camp site" },
-    { src: "/images/tours/motorbike-tour-1.jpg", alt: "Motorbike tour through valleys" },
-    { src: "/images/tours/motorbike-tour-2.jpg", alt: "Riding mountain passes around Sapa" },
+    { src: "/images/gallery/photo1.jpeg", alt: "Sapa rice terraces" },
+    { src: "/images/gallery/photo2.jpeg", alt: "Hmong village" },
+    { src: "/images/gallery/photo3.jpeg", alt: "Red Dao herbal bath" },
+    { src: "/images/gallery/photo4.jpeg", alt: "Trekking trail through valleys" },
+    { src: "/images/gallery/photo5.jpeg", alt: "Homestay exterior at sunrise" },
+    { src: "/images/gallery/photo6.jpeg", alt: "Misty mountain peaks" },
+    { src: "/images/gallery/photo7.jpeg", alt: "Stilt house among rice fields" },
+    { src: "/images/gallery/photo8.jpeg", alt: "Hmong textile crafts" },
+    { src: "/images/gallery/photo9.jpeg", alt: "Local market in Sapa" },
+    { src: "/images/gallery/photo10.jpeg", alt: "Bamboo bridge over river" },
+    { src: "/images/gallery/photo11.jpeg", alt: "Sunset over Muong Hoa valley" },
+    { src: "/images/gallery/photo12.jpeg", alt: "Trekking guide on the trail" },
+    { src: "/images/gallery/photo13.jpeg", alt: "Camping under the stars" },
+    { src: "/images/gallery/photo14.jpeg", alt: "Traditional Hmong breakfast" },
+    { src: "/images/gallery/photo15.jpeg", alt: "Indigo dyeing process" },
+    { src: "/images/gallery/photo16.jpeg", alt: "Rice field workers" },
+    { src: "/images/gallery/photo17.jpeg", alt: "Room view from balcony" },
+    { src: "/images/gallery/photo18.jpeg", alt: "Waterfall on trekking route" },
+    { src: "/images/gallery/photo19.jpeg", alt: "Family dinner at the homestay" },
+    { src: "/images/gallery/photo20.jpeg", alt: "Panoramic Sapa landscape" },
   ],
 
   // -------- Guest reviews --------

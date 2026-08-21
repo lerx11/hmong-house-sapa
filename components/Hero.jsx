@@ -6,10 +6,7 @@ import { siteConfig, buildWhatsappLink } from "@/data/siteConfig";
 import { WhatsAppIcon, ArrowRightIcon, StarIcon } from "./Icons";
 import BookingBadge from "./BookingBadge";
 
-// Placeholder hero image — TODO: replace with a real photo of the Sapa
-// rice terraces / Hmong House, ideally 1920x1280, stored in /public/images/.
-const heroImage =
-  "https://placehold.co/1920x1280/6B8E4E/FFF8F0?text=Sapa+Rice+Terraces";
+const heroImage = siteConfig.hero.backgroundImage;
 
 // Shared animation variants for the staggered entrance.
 const container = {
