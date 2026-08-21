@@ -31,20 +31,32 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             className="relative"
           >
-            <div className="grid aspect-[4/5] w-full grid-cols-2 gap-3 overflow-hidden rounded-3xl shadow-lift">
-              <div className="relative col-span-2 row-span-2 overflow-hidden first:rounded-tl-3xl">
+            <div className="grid aspect-[4/5] w-full grid-cols-2 grid-rows-3 gap-3 overflow-hidden rounded-3xl shadow-lift">
+              {/* Large primary photo — top, spans both columns and two rows */}
+              <div className="relative col-span-2 row-span-2 overflow-hidden rounded-tl-3xl rounded-tr-3xl">
                 <Image
                   src={about.images[0]}
                   alt="Hmong House hosts — Su sisters"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+              {/* Smaller photo — bottom left */}
+              <div className="relative overflow-hidden rounded-bl-3xl">
+                <Image
+                  src={about.images[1]}
+                  alt="Hmong House homestay exterior"
                   fill
                   sizes="(max-width: 1024px) 100vw, 25vw"
                   className="object-cover transition-transform duration-500 hover:scale-105"
                 />
               </div>
-              <div className="relative overflow-hidden last:rounded-br-3xl sm:row-span-1">
+              {/* Smaller photo — bottom right */}
+              <div className="relative overflow-hidden rounded-br-3xl">
                 <Image
-                  src={about.images[1]}
-                  alt="Hmong House homestay exterior"
+                  src={about.images[2]}
+                  alt="Rice terraces near Hmong House"
                   fill
                   sizes="(max-width: 1024px) 100vw, 25vw"
                   className="object-cover transition-transform duration-500 hover:scale-105"
