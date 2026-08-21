@@ -63,7 +63,7 @@ export const siteConfig = {
   // -------- Accommodation (homestay rooms) --------
   rooms: {
     count: 20,
-    priceRange: "400,000 - 1,400,000 VND",
+    priceRange: "$16 - $55 per night",
     amenities: [
       "Mountain & rice terrace views",
       "Private and dorm options",
@@ -82,7 +82,7 @@ export const siteConfig = {
     subtitle: "Experience authentic Hmong hospitality",
     description:
       "Our homestay features 20 comfortable rooms with stunning mountain views. Wake up to the sight of rice terraces and enjoy traditional home-cooked meals with our family.",
-    priceRange: "400,000 - 1,400,000 VND per night",
+    priceRange: "$16 - $55 per night",
     amenities: [
       { icon: "mountain", label: "Mountain view" },
       { icon: "wifi", label: "Free WiFi" },
@@ -151,7 +151,10 @@ export const siteConfig = {
       name: "Hmong Village Trekking",
       duration: "1 Day",
       difficulty: "Easy",
-      price: "750,000 VND",
+      price: "$20 - $25",
+      priceGroup: "$20",
+      pricePrivate: "$25",
+      priceNote: "per person",
       shortDescription:
         "A gentle full-day walk through Hmong villages, rice terraces, and bamboo bridges along the Muong Hoa valley.",
       fullDescription:
@@ -218,7 +221,10 @@ export const siteConfig = {
       name: "Herbal Trekking with Red Dao",
       duration: "1 Day",
       difficulty: "Medium",
-      price: "950,000 VND",
+      price: "$30 - $35",
+      priceGroup: "$30",
+      pricePrivate: "$35",
+      priceNote: "per person",
       shortDescription:
         "Discover Red Dao culture, herbal medicine traditions, and enjoy a traditional herbal foot bath",
       fullDescription:
@@ -291,7 +297,8 @@ export const siteConfig = {
       name: "2D1N Hmong & Red Dao Combo",
       duration: "2 Days 1 Night",
       difficulty: "Medium",
-      price: "950,000 VND",
+      price: "$55",
+      priceNote: "per person",
       shortDescription:
         "Discover Hmong and Red Dao cultures on a 2-day trek with homestay, herbal bath, and cooking class",
       fullDescription:
@@ -393,7 +400,8 @@ export const siteConfig = {
       name: "2-Day Camping Trek",
       duration: "2 Days 1 Night",
       difficulty: "Hard",
-      price: "2,000,000 VND",
+      price: "$60",
+      priceNote: "per person",
       shortDescription:
         "A rugged two-day trek above the clouds, camping on a high ridge with sunrise over the rice terraces.",
       fullDescription:
@@ -464,7 +472,8 @@ export const siteConfig = {
       name: "Motorbike Tour",
       duration: "1 Day",
       difficulty: "Easy",
-      price: "1,200,000 VND",
+      price: "$45",
+      priceNote: "per person",
       shortDescription:
         "Ride pillion with a local guide through Sapa's most scenic mountain passes, waterfalls, and viewpoints.",
       fullDescription:
