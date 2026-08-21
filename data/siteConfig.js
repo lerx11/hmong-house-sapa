@@ -132,14 +132,14 @@ export const siteConfig = {
       },
     ],
     images: [
-      "/images/about/su-sisters.jpg",
-      "/images/about/homestay-exterior.jpg",
+      "/images/about/su-sisters.jpeg",
+      "/images/about/homestay-exterior.jpeg",
     ],
   },
 
   // -------- Hero --------
   hero: {
-    backgroundImage: "/images/hero/hero-bg.jpg",
+    backgroundImage: "/images/hero/hero-bg.jpeg",
   },
 
   // -------- Tours --------
