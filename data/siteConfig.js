@@ -134,6 +134,7 @@ export const siteConfig = {
     images: [
       "/images/about/su-sisters.jpeg",
       "/images/about/homestay-exterior.jpeg",
+      "/images/about/about-extra.jpeg",
     ],
   },
 
