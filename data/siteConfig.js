@@ -196,7 +196,13 @@ export const siteConfig = {
       meetingPoint: "Hmong House Sapa, Ta Van Village",
       startTime: "08:30",
       endTime: "16:00",
-      images: [ph(1200, 900, "Village Trek 1"), ph(1200, 900, "Village Trek 2")],
+      images: [
+        "/images/tours/hmong-village-1.jpeg",
+        "/images/tours/hmong-village-2.jpeg",
+        "/images/tours/hmong-village-3.jpeg",
+        "/images/tours/hmong-village-4.jpeg",
+        "/images/tours/hmong-village-5.jpeg",
+      ],
     },
     {
       slug: "herbal-trekking-red-dao",
@@ -258,8 +264,13 @@ export const siteConfig = {
       startTime: "09:00",
       endTime: "16:30",
       images: [
-        ph(1200, 900, "Herbal Trek 1"),
-        ph(1200, 900, "Herbal Trek 2"),
+        "/images/tours/herbal-trekking-1.jpeg",
+        "/images/tours/herbal-trekking-2.jpeg",
+        "/images/tours/herbal-trekking-3.jpeg",
+        "/images/tours/herbal-trekking-4.jpeg",
+        "/images/tours/herbal-trekking-5.jpeg",
+        "/images/tours/herbal-trekking-6.jpg",
+        "/images/tours/herbal-trekking-7.jpg",
       ],
     },
     {
@@ -323,8 +334,12 @@ export const siteConfig = {
       startTime: "Day 1 · 08:30",
       endTime: "Day 2 · 16:30",
       images: [
-        ph(1200, 900, "Combo 1"),
-        ph(1200, 900, "Combo 2"),
+        "/images/tours/2d1n-combo-1.jpeg",
+        "/images/tours/2d1n-combo-2.jpeg",
+        "/images/tours/2d1n-combo-3.jpeg",
+        "/images/tours/2d1n-combo-4.jpeg",
+        "/images/tours/2d1n-combo-5.jpeg",
+        "/images/tours/2d1n-combo-6.jpg",
       ],
     },
     {
@@ -393,8 +408,9 @@ export const siteConfig = {
       startTime: "Day 1 · 07:30",
       endTime: "Day 2 · 16:00",
       images: [
-        ph(1200, 900, "Camping 1"),
-        ph(1200, 900, "Camping 2"),
+        "/images/tours/camping-trek-1.jpeg",
+        "/images/tours/camping-trek-2.jpeg",
+        "/images/tours/camping-trek-3.jpeg",
       ],
     },
     {
@@ -462,25 +478,25 @@ export const siteConfig = {
       startTime: "08:30",
       endTime: "16:00",
       images: [
-        ph(1200, 900, "Motorbike 1"),
-        ph(1200, 900, "Motorbike 2"),
+        "/images/tours/motorbike-tour-1.jpg",
+        "/images/tours/motorbike-tour-2.jpg",
+        "/images/tours/motorbike-tour-3.jpg",
       ],
     },
   ],
 
   // -------- Gallery (masonry grid) --------
-  // TODO: replace placeholder paths with real photos in /public/images/gallery/.
   gallery: [
-    { src: ph(800, 1000, "Gallery 1"), alt: "Rice terraces at sunrise" },
-    { src: ph(800, 600, "Gallery 2"), alt: "Hmong guide on the trail" },
-    { src: ph(800, 1100, "Gallery 3"), alt: "Indigo dyeing in the village" },
-    { src: ph(800, 600, "Gallery 4"), alt: "Bamboo bridge over the river" },
-    { src: ph(800, 900, "Gallery 5"), alt: "Red Dao herbal bath" },
-    { src: ph(800, 1200, "Gallery 6"), alt: "Valley from a high camp" },
-    { src: ph(800, 600, "Gallery 7"), alt: "Stilt house at dusk" },
-    { src: ph(800, 1000, "Gallery 8"), alt: "Misty mountain pass" },
-    { src: ph(800, 600, "Gallery 9"), alt: "Hmong child with buffalo" },
-    { src: ph(800, 900, "Gallery 10"), alt: "Sunset over Ta Van" },
+    { src: "/images/tours/hmong-village-1.jpeg", alt: "Hmong village rice terraces" },
+    { src: "/images/tours/hmong-village-2.jpeg", alt: "Trekking through Hmong villages" },
+    { src: "/images/tours/herbal-trekking-1.jpeg", alt: "Red Dao herbal trekking trail" },
+    { src: "/images/tours/herbal-trekking-2.jpeg", alt: "Red Dao village and mountains" },
+    { src: "/images/tours/2d1n-combo-1.jpeg", alt: "Hmong & Red Dao combo tour" },
+    { src: "/images/tours/2d1n-combo-2.jpeg", alt: "Overnight homestay experience" },
+    { src: "/images/tours/camping-trek-1.jpeg", alt: "Camping in Sapa mountains" },
+    { src: "/images/tours/camping-trek-2.jpeg", alt: "Sunset at high camp site" },
+    { src: "/images/tours/motorbike-tour-1.jpg", alt: "Motorbike tour through valleys" },
+    { src: "/images/tours/motorbike-tour-2.jpg", alt: "Riding mountain passes around Sapa" },
   ],
 
   // -------- Guest reviews --------
