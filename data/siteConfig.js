@@ -162,7 +162,7 @@ export const siteConfig = {
       shortDescription:
         "Visit six authentic villages, ancient Hmong houses, and panoramic mountain views",
       fullDescription:
-        "Visiting six villages, besides the Hmong people, there are also several other ethnic groups living together. Around 9:30 a.m., you meet the tour guide and begin the tour. Just a few steps from the Hmong house is an ancient village, with about 10 houses inhabited by the same tribe, almost perfectly preserving the ancient and longest-standing cultural lifestyle in the Sapa region that has not been commercialized. One house can accommodate 15-25 people living together under a multi-generational family system. These houses are hundreds of years old, passed down from father to son. The front roof is low and black. There is no separation between the kitchen and the main house, and they have an attic for storing crops or sleeping. Through this ancient village, you will witness the authentic life of the Hmong people, see animals such as buffalo, cows, pigs, and chickens. After that, you walk across a small stream and through a primary bamboo forest to Ta Van Mong village, then continue climbing to Lao Chai San 1 village, the highest point where you can enjoy panoramic views of many mountain peaks, Sa Pa town, and Fansipan peak.",
+        "Around 9:30 AM, meet your guide at Hmong House and begin your journey. Just a few steps away lies an ancient village — about 10 houses inhabited by the same tribe, preserving the oldest cultural lifestyle in Sapa that has not been commercialized. These houses are hundreds of years old, passed down from father to son. One house can accommodate 15-25 people living together under a multi-generational family system. Through this ancient village, you will witness the authentic life of the Hmong people — see buffalo, cows, pigs, and chickens, and listen to your guide share stories about their culture. Continue across a small stream and through primary bamboo forest to Ta Van Mong village, then climb along a narrow trail to Lao Chai San 1 — the highest point with panoramic views of mountain peaks, Sa Pa town, and Fansipan peak.",
       highlights: [
         "Visit six authentic villages with different ethnic groups",
         "See ancient Hmong houses that are hundreds of years old",
@@ -177,7 +177,7 @@ export const siteConfig = {
         },
         {
           time: "10:00 AM",
-          title: "Visit ancient Hmong village with 10 traditional houses",
+          title: "Visit ancient Hmong village with traditional houses",
         },
         {
           time: "11:00 AM",
@@ -416,7 +416,7 @@ export const siteConfig = {
       shortDescription:
         "2-day adventure trek with camping in the forest, waterfall visit, and local farm experience",
       fullDescription:
-        "At 9:30 AM, you will meet the tour guide and begin the journey. Just a few steps from the Hmong House is an ancient village with about 10 houses inhabited by the same tribe, almost perfectly preserving the oldest and most traditional cultural lifestyle in the Sapa area. Next, you will visit Ta Van Mong village, then continue climbing to Lao Chai San, home to the most beautiful terraced fields in Vietnam. Continue moving up to the mountain peak where you can catch the sea of clouds if weather permits. Day 1 ends at a local farm where camping is set up in the forest. You can harvest vegetables and cook with locals. Day 2 continues hiking from the mountain peak down through primary bamboo forest, visit a waterfall where you can bathe, then visit Giang Ta Chai Dao village and walk along Muong Hoa stream back to Hmong House.",
+        "At 9:30 AM, meet your guide and begin the journey. Visit an ancient village with houses hundreds of years old, preserving the oldest cultural lifestyle in Sapa. Continue to Ta Van Mong village, then climb to Lao Chai San — home to the most beautiful terraced fields in Vietnam. Reach the mountain peak where you can catch the sea of clouds if weather permits. Lunch is prepared by us and served at a scenic spot — there are no restaurants in this peaceful, rarely crowded area. Day 1 ends at a local farm where camping is set up in the forest. Harvest vegetables and cook with locals, enjoy dinner with the guide and family, then sleep surrounded by nature with views of the ancient forest. Day 2: Wake early for sunrise. At 9:30 AM, hike down through primary bamboo forest to a waterfall — swim if weather allows. Visit Giang Ta Chai Dao village, walk along Muong Hoa stream, and end at Hmong House with a relaxing herbal foot soak.",
       highlights: [
         "Camping in the forest with views of primary forest",
         "Visit ancient Hmong village and most beautiful terraced fields",
@@ -528,7 +528,7 @@ export const siteConfig = {
       shortDescription:
         "Explore all famous spots in Sa Pa by motorbike: villages, waterfall, Heaven's Gate, and Glass Bridge",
       fullDescription:
-        "Departing at 9:30 AM from Hmong House, our guide will take you to visit Ta Van Village, then proceed to Lao Chai Village, and continue to Y Linh Ho Village, which boasts the most beautiful terraced rice fields in Sa Pa. Next, continue to Sa Pa town to visit Cat Cat Village, a well-known spot comparable to Fenghuang Ancient Town in China. Then, tour around the town to reach Love Waterfall, the most famous waterfall in Sa Pa because of its romantic legend and mystical beauty. Continue to Heaven's Gate, the point where two provinces meet, offering panoramic views of many mountain ranges. Additionally, you can visit the Glass Bridge, known for its height and various exciting activities. This motorbike tour explores almost all the famous and most beautiful spots in Sa Pa, passing through about 10 villages.",
+        "Depart at 9:30 AM from Hmong House. Visit Ta Van Village, then Lao Chai Village, and continue to Y Linh Ho — boasting the most beautiful terraced rice fields in Sa Pa. Stop for stunning photos along the way. Continue along terraced fields to Sa Pa town to visit Cat Cat Village — famous and comparable to Fenghuang Ancient Town in China. Ride to Love Waterfall, the most famous waterfall in Sa Pa with its romantic legend and mystical beauty. Then reach Heaven's Gate — the highest peak where two provinces meet, offering panoramic views and drifting clouds. Optional visit to the Glass Bridge for adventure activities. Return via national highway. This tour explores almost all famous spots in Sa Pa, passing through about 10 villages.",
       highlights: [
         "Visit Ta Van, Lao Chai, and Y Linh Ho villages",
         "See the most beautiful terraced rice fields in Sa Pa",
