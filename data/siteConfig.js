@@ -109,11 +109,15 @@ export const siteConfig = {
     subtitle:
       "We are a Hmong family sharing our village, our trails, and our traditions with travellers who want more than a postcard.",
     story: [
-      "Hmong House was built by our family three generations ago, on a small rise above the Muong Hoa valley in Ta Van Village. What began as a single guest room for trekkers passing through has grown into a 20-room homestay — but the spirit has not changed.",
-      "We are Hmong, and our neighbours are Red Dao. Together we guide visitors along the same footpaths our grandparents walked to reach the rice fields, the herbal forests, and the high camps above the clouds. Every trek supports local guides, their families, and the crafts that keep our culture alive.",
+      "I was born in a remote village 40 kilometers from the bustling town of Sa Pa. Fate smiled upon me when I was just three days old; I was fortunate enough to be adopted by a kind Hmong mother from Ta Van village. Yet, like most highland girls of that time, I did not attend school or learn to read and write, facing instead a predetermined future: early marriage and resignation to my lot in life.",
+      "That year, a man dragged me away to become his wife, following an old custom. Amidst the darkness of that unfamiliar house, a wake-up call rang out in my mind: 'If I accept this, my life will forever be a cycle of days spent toiling in the fields, with no way out.' I summoned all my courage to flee that marriage. It was not merely an escape from a man, but an escape from an imposed destiny.",
+      "I realized that to change my life, I needed to connect with the world. With no money, no formal education, and no teachers, I began learning English—haltingly at first—from foreign tourists visiting Ta Van. I learned word by word, mimicked their pronunciation, and persisted in speaking whenever the opportunity arose. From those initial, hesitant words—and fueled by unwavering determination—I mastered English. This opened a new door for me, completely transforming my life; I gained confidence in communication and became a genuine tour guide. English helped me recognize my own true worth and the unique beauty of my homeland.",
+      "We are two women—one who dared to dream and one who dared to act; one who is literate and one who speaks English—united by a deep, shared belief. Today, we proudly own a homestay and operate local tours right here in the beautiful land of Ta Van. When you choose to stay at our homestay or join us on our tours, you are not just exploring Sa Pa; you are also helping us write a meaningful story.",
+      "Our ultimate goal is to create livelihoods for women and generate stable employment for the Hmong and Dao women who serve as local guides, breathing life and soul into this beautiful region. We want these highland women to realize just how capable and valuable they are. They possess their own unique worth and deserve to be confident and masters of their own lives.",
+      "Travel is about more than just sightseeing; it is about connecting souls, creating value, transforming lives, and fostering hope for the future. Join our tour to experience a truly different side of Sa Pa—one filled with resilience and the warmth of human connection.",
     ],
     mission:
-      "To share Sapa honestly — through real people, real trails, and real hospitality — while protecting the land and communities that make it worth visiting.",
+      "To create livelihoods for Hmong and Dao women through sustainable tourism, empowering them to be confident and independent.",
     values: [
       {
         icon: "leaf",
