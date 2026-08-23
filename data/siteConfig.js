@@ -151,7 +151,7 @@ export const siteConfig = {
       name: "Hmong Village Trekking",
       duration: "1 Day",
       difficulty: "Easy",
-      price: "$20",
+      price: "$20 - $25",
       priceGroup: "$20",
       pricePrivate: "$25",
       priceNote: "per person",
