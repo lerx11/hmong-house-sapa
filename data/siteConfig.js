@@ -522,46 +522,57 @@ export const siteConfig = {
       price: "$45",
       priceNote: "per person",
       shortDescription:
-        "Ride pillion with a local guide through Sapa's most scenic mountain passes, waterfalls, and viewpoints.",
+        "Explore all famous spots in Sa Pa by motorbike: villages, waterfall, Heaven's Gate, and Glass Bridge",
       fullDescription:
-        "See more of Sapa in a day. You ride pillion (as a passenger) on a semi-automatic motorbike driven by an experienced local guide, or self-drive if you hold a valid licence. The route crosses the Silver Waterfall, Tram Ton Pass (the highest road in Vietnam), and Heaven's Gate, with stops at viewpoints, tea farms, and a Hmong village. No trekking experience required — perfect for those short on time or with limited mobility.",
+        "Departing at 9:30 AM from Hmong House, our guide will take you to visit Ta Van Village, then proceed to Lao Chai Village, and continue to Y Linh Ho Village, which boasts the most beautiful terraced rice fields in Sa Pa. Next, continue to Sa Pa town to visit Cat Cat Village, a well-known spot comparable to Fenghuang Ancient Town in China. Then, tour around the town to reach Love Waterfall, the most famous waterfall in Sa Pa because of its romantic legend and mystical beauty. Continue to Heaven's Gate, the point where two provinces meet, offering panoramic views of many mountain ranges. Additionally, you can visit the Glass Bridge, known for its height and various exciting activities. This motorbike tour explores almost all the famous and most beautiful spots in Sa Pa, passing through about 10 villages.",
       highlights: [
-        "Tram Ton Pass — Vietnam's highest road",
-        "Silver Waterfall & Heaven's Gate",
-        "Ride pillion or self-drive",
-        "Mountain & valley viewpoints",
-        "No trekking required",
+        "Visit Ta Van, Lao Chai, and Y Linh Ho villages",
+        "See the most beautiful terraced rice fields in Sa Pa",
+        "Visit Cat Cat Village and Love Waterfall",
+        "Reach Heaven's Gate - the highest peak with panoramic views",
+        "Optional visit to Glass Bridge",
+        "Pass through about 10 villages",
       ],
       itinerary: [
         {
-          time: "08:30",
-          title: "Briefing at Hmong House",
-          text: "Helmet fitting and safety briefing.",
+          time: "9:30 AM",
+          title: "Depart from Hmong House",
         },
         {
-          time: "09:00",
-          title: "Ride to Silver Waterfall",
-          text: "Scenic climb from the valley.",
+          time: "10:00 AM",
+          title: "Visit Ta Van Village",
         },
         {
-          time: "11:00",
-          title: "Tram Ton Pass",
-          text: "Stop at the highest road pass in Vietnam.",
+          time: "10:30 AM",
+          title: "Visit Lao Chai Village",
         },
         {
-          time: "12:30",
-          title: "Lunch at Heaven's Gate",
-          text: "Local restaurant with mountain views.",
+          time: "11:30 AM",
+          title: "Y Linh Ho Village (most beautiful terraces)",
         },
         {
-          time: "14:00",
-          title: "Village & tea farm loop",
-          text: "Gentle descent through a Hmong village.",
+          time: "12:30 PM",
+          title: "Lunch break",
         },
         {
-          time: "16:00",
-          title: "Return to Hmong House",
-          text: "Arrive back at Ta Van.",
+          time: "1:30 PM",
+          title: "Visit Cat Cat Village",
+        },
+        {
+          time: "2:30 PM",
+          title: "Love Waterfall",
+        },
+        {
+          time: "3:30 PM",
+          title: "Heaven's Gate",
+        },
+        {
+          time: "4:30 PM",
+          title: "Optional Glass Bridge",
+        },
+        {
+          time: "5:30 PM",
+          title: "Return via national highway",
         },
       ],
       included: [
