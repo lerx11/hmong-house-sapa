@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import TourCard from "@/components/TourCard";
+import { TourPhotoGallery } from "@/components/Gallery";
 import {
   siteConfig,
   getTourBySlug,
@@ -122,6 +123,18 @@ export default function TourPage({ params }) {
           </a>
         </div>
       </div>
+
+      {/* Photo gallery — featured + responsive grid, right after title/price */}
+      {tour.images.length > 0 && (
+        <section className="section pt-10">
+          <div className="container-warm">
+            <h2 className="mb-6 font-display text-2xl text-ink md:text-3xl">
+              Photo gallery
+            </h2>
+            <TourPhotoGallery images={tour.images} tourName={tour.name} />
+          </div>
+        </section>
+      )}
 
       {/* Main content */}
       <section className="section">
@@ -251,33 +264,6 @@ export default function TourPage({ params }) {
           </aside>
         </div>
       </section>
-
-      {/* Photo gallery (grid) */}
-      {tour.images.length > 1 && (
-        <section className="section pt-0">
-          <div className="container-warm">
-            <h2 className="font-display text-2xl text-ink md:text-3xl">
-              Photo gallery
-            </h2>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {tour.images.map((img, i) => (
-                <div
-                  key={i}
-                  className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-soft"
-                >
-                  <Image
-                    src={img}
-                    alt={`${tour.name} — photo ${i + 1}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Similar tours */}
       <section className="section pt-0">

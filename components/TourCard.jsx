@@ -17,15 +17,15 @@ export default function TourCard({ tour, index = 0 }) {
       className="card-warm group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift"
       style={{ animationDelay: `${index * 80}ms` }}
     >
-      {/* Photo (4:3) with badges */}
-      <div className="relative aspect-[4/3] overflow-hidden">
+      {/* Photo (4:3) with badges — full card width, subtle zoom on hover */}
+      <div className="relative w-full aspect-[4/3] overflow-hidden rounded-t-3xl">
         {cover && (
           <Image
             src={cover}
             alt={tour.name}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
           />
         )}
         {/* Dark gradient for badge legibility */}
