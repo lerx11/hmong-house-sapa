@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { siteConfig } from "@/data/siteConfig";
-import { ValueIcon } from "./Icons";
+import { ValueIcon, ArrowRightIcon } from "./Icons";
 
 // Scroll-reveal wrapper used across sections for consistent animation.
 export const reveal = {
@@ -18,10 +18,8 @@ export const reveal = {
 
 export default function About() {
   const { about } = siteConfig;
+  // The story is visually truncated with a gradient fade and expanded via toggle.
   const [expanded, setExpanded] = useState(false);
-  // First two paragraphs are always visible on mobile; the rest toggle.
-  const firstParagraphs = about.story.slice(0, 2);
-  const restParagraphs = about.story.slice(2);
 
   return (
     <section id="about" className="section">
@@ -86,54 +84,45 @@ export default function About() {
             </h2>
             <p className="mt-4 text-ink/70 md:text-lg">{about.subtitle}</p>
 
-            {/* Story — desktop shows the full text; mobile collapses to 2 paragraphs with Read More */}
-            <div className="mt-6 space-y-4 md:hidden">
-              {/* First two paragraphs always visible */}
-              {firstParagraphs.map((paragraph, i) => (
-                <p key={i} className="text-ink/75">
-                  {paragraph}
-                </p>
-              ))}
+            {/* Story — truncated to match photo-column height, expandable via toggle */}
+            <div className="mt-6">
+              <motion.div
+                animate={{ height: expanded ? "auto" : "540px" }}
+                initial={false}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="relative overflow-hidden"
+              >
+                <div className="space-y-4">
+                  {about.story.map((paragraph, i) => (
+                    <p key={i} className="text-ink/75">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
 
-              {/* Remaining paragraphs animate open/closed */}
-              <AnimatePresence initial={false}>
-                {restParagraphs.length > 0 && (
-                  <motion.div
-                    key="mobile-rest"
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: expanded ? "auto" : 0, opacity: 1 }}
-                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="overflow-hidden"
-                  >
-                    <div className="space-y-4">
-                      {restParagraphs.map((paragraph, i) => (
-                        <p key={i} className="text-ink/75">
-                          {paragraph}
-                        </p>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                {/* Subtle gradient fade at the bottom of the truncated text */}
+                <motion.div
+                  initial={false}
+                  animate={{ opacity: expanded ? 0 : 1 }}
+                  transition={{ duration: 0.35 }}
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-cream via-cream/60 to-transparent"
+                />
+              </motion.div>
 
-              {restParagraphs.length > 0 && (
-                <button
-                  type="button"
-                  onClick={() => setExpanded((v) => !v)}
-                  className="btn-gold mt-2 w-full sm:w-auto"
+              <motion.button
+                type="button"
+                onClick={() => setExpanded((v) => !v)}
+                className="group mt-4 inline-flex items-center gap-2 text-sm font-medium text-rice transition-colors hover:text-rice/80"
+              >
+                <span>{expanded ? "Read Less" : "Read Full Story"}</span>
+                <span
+                  className={`grid h-6 w-6 place-items-center rounded-full border border-current transition-transform duration-300 ${
+                    expanded ? "rotate-90" : "rotate-0"
+                  } group-hover:-rotate-90`}
                 >
-                  {expanded ? "Read Less" : "Read More"}
-                </button>
-              )}
-            </div>
-
-            {/* Desktop: full story, no truncation */}
-            <div className="mt-6 hidden space-y-4 md:block">
-              {about.story.map((paragraph, i) => (
-                <p key={i} className="text-ink/75">
-                  {paragraph}
-                </p>
-              ))}
+                  <ArrowRightIcon width={12} height={12} />
+                </span>
+              </motion.button>
             </div>
 
             {/* Mission callout */}
