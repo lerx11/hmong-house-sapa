@@ -26,21 +26,21 @@ export default function StayWithUs() {
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <div className="grid grid-cols-1 gap-4 overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid-cols-2 lg:max-h-[500px] lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-3 overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid-cols-2 lg:max-h-[500px] lg:grid-cols-3">
               {roomImages.map((img, i) => (
                 <button
                   key={i}
                   type="button"
                   onClick={() => setActive(i)}
                   aria-label={`Open image: ${img.alt}`}
-                  className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-ink/5 outline-none"
+                  className="group relative block w-full aspect-[4/3] overflow-hidden rounded-2xl bg-ink/5 outline-none"
                 >
                   <Image
                     src={img.src}
                     alt={img.alt}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <span className="absolute inset-0 bg-cream/0 transition-colors duration-300 group-hover:bg-cream/5" />
                 </button>
