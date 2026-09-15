@@ -37,3 +37,4 @@ next-env.d.ts
 
 # visual-test screenshots
 screenshots/
+public/images_backup/
