@@ -13,8 +13,11 @@ export default function TourCard({ tour, index = 0 }) {
   const cover = tour.images?.[0];
 
   return (
-    <article
-      className="card-warm group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift"
+    <Link
+      href={`/tours/${tour.slug}`}
+      scroll
+      aria-label={`View the ${tour.name} tour`}
+      className="card-warm group flex cursor-pointer flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rice/60"
       style={{ animationDelay: `${index * 80}ms` }}
     >
       {/* Photo (4:3) with badges — full card width, subtle zoom on hover */}
@@ -48,7 +51,7 @@ export default function TourCard({ tour, index = 0 }) {
 
       {/* Body */}
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="font-display text-xl leading-snug text-ink">
+        <h3 className="font-display text-xl leading-snug text-ink transition-colors duration-300 group-hover:text-rice">
           {tour.name}
         </h3>
         <p className="mt-1 font-display text-lg font-semibold text-rice">
@@ -58,18 +61,16 @@ export default function TourCard({ tour, index = 0 }) {
           {tour.shortDescription}
         </p>
 
-        <Link
-          href={`/tours/${tour.slug}`}
-          className="mt-5 inline-flex items-center gap-2 self-start text-sm font-medium text-ink transition-colors group-hover:text-rice"
-        >
+        {/* "Read More" is a visual cue now — the whole card is the link */}
+        <span className="mt-5 inline-flex items-center gap-2 self-start text-sm font-medium text-ink transition-colors group-hover:text-rice">
           Read More
           <ArrowRightIcon
             width={16}
             height={16}
             className="transition-transform duration-300 group-hover:translate-x-1"
           />
-        </Link>
+        </span>
       </div>
-    </article>
+    </Link>
   );
 }
