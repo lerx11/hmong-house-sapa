@@ -180,7 +180,7 @@ export function TourPhotoGallery({ images = [], tourName = "" }) {
             <button
               key={i}
               type="button"
-              onClick={() => setGridOpen(true)}
+              onClick={() => setActive(i)}
               aria-label={`Open image: ${img.alt}`}
               className="group relative aspect-[4/3] w-[240px] flex-shrink-0 snap-start overflow-hidden rounded-2xl bg-ink/5 outline-none md:w-[280px]"
             >
