@@ -687,6 +687,7 @@ export const siteConfig = {
 
   // -------- Gallery (masonry grid) --------
   gallery: [
+    // 20 dedicated gallery photos
     { src: "/images/gallery/photo1.jpeg", alt: "Sapa rice terraces" },
     { src: "/images/gallery/photo2.jpeg", alt: "Hmong village" },
     { src: "/images/gallery/photo3.jpeg", alt: "Red Dao herbal bath" },
@@ -707,6 +708,28 @@ export const siteConfig = {
     { src: "/images/gallery/photo18.jpeg", alt: "Waterfall on trekking route" },
     { src: "/images/gallery/photo19.jpeg", alt: "Family dinner at the homestay" },
     { src: "/images/gallery/photo20.jpeg", alt: "Panoramic Sapa landscape" },
+    // 15 tour photos (3 from each of the 5 tours)
+    { src: "/images/tours/hmong-village/1.jpeg", alt: "Hmong village trekking route" },
+    { src: "/images/tours/hmong-village/2.jpeg", alt: "Ancient Hmong houses" },
+    { src: "/images/tours/hmong-village/3.jpeg", alt: "Hmong village panorama" },
+    { src: "/images/tours/herbal-trekking/1.jpeg", alt: "Red Dao herbal trek" },
+    { src: "/images/tours/herbal-trekking/2.jpeg", alt: "Medicinal herbs in the forest" },
+    { src: "/images/tours/herbal-trekking/3.jpeg", alt: "Red Dao village valley" },
+    { src: "/images/tours/2d1n-combo/1.jpeg", alt: "Terraced rice fields" },
+    { src: "/images/tours/2d1n-combo/2.jpeg", alt: "Hmong and Red Dao valley" },
+    { src: "/images/tours/2d1n-combo/3.jpeg", alt: "Homestay cooking class" },
+    { src: "/images/tours/camping-trek/1.jpeg", alt: "Camping trek in the forest" },
+    { src: "/images/tours/camping-trek/2.jpeg", alt: "Mountain campsite" },
+    { src: "/images/tours/camping-trek/3.jpeg", alt: "Waterfall on camping trek" },
+    { src: "/images/tours/motorbike-tour/1.jpg", alt: "Motorbike tour in Sapa" },
+    { src: "/images/tours/motorbike-tour/2.jpg", alt: "Riding through villages" },
+    { src: "/images/tours/motorbike-tour/3.jpg", alt: "Mountain roads by motorbike" },
+    // 5 room photos
+    { src: "/images/rooms/room-1.jpeg", alt: "Room at Hmong House Sapa" },
+    { src: "/images/rooms/room-2.jpeg", alt: "Room with mountain view" },
+    { src: "/images/rooms/room-3.jpeg", alt: "Comfortable bed with warm linens" },
+    { src: "/images/rooms/room-4.jpeg", alt: "Bathroom" },
+    { src: "/images/rooms/room-5.jpeg", alt: "Balcony view of the valley" },
   ],
 
   // -------- Guest reviews --------
