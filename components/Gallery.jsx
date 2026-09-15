@@ -8,12 +8,17 @@ import { ArrowRightIcon, ArrowLeftIcon } from "./Icons";
 import { reveal } from "./About";
 import Lightbox, { useLightbox } from "./Lightbox";
 
-// -------- Home page gallery (2x3 grid + "See All Photos") --------
+// -------- Home page gallery (horizontal scroll strip) --------
 export default function Gallery() {
   const { active, setActive, close, next, prev, current, normalized: images } =
     useLightbox(siteConfig.gallery);
-  // Show the first 6 photos; "See All Photos" opens the lightbox over all of them.
-  const visible = images.slice(0, 6);
+  const stripRef = useRef(null);
+
+  // Smoothly scroll the strip by roughly one card width.
+  const scrollStrip = (dir) => {
+    const el = stripRef.current;
+    if (el) el.scrollBy({ left: dir * 300, behavior: "smooth" });
+  };
 
   return (
     <section id="gallery" className="section">
@@ -36,49 +41,74 @@ export default function Gallery() {
           </p>
         </motion.div>
 
-        {/* 3-column grid (2 rows) */}
+        {/* Horizontal scrollable strip */}
         <motion.div
           variants={reveal}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-50px" }}
-          className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3"
+          className="mt-12"
         >
-          {visible.map((img, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setActive(i)}
-              aria-label={`Open image: ${img.alt}`}
-              className="group relative block aspect-[4/3] w-full overflow-hidden rounded-2xl bg-ink/5 shadow-soft"
-            >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              {/* Hover overlay */}
-              <span className="absolute inset-0 flex items-end bg-gradient-to-t from-ink/55 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <span className="p-4 text-left text-xs font-medium text-cream">
-                  {img.alt}
-                </span>
-              </span>
-            </button>
-          ))}
-        </motion.div>
+          <div className="relative">
+            {/* Soft edge fades to hint at more content */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-cream to-transparent md:w-16" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-cream to-transparent md:w-16" />
 
-        {/* "See All Photos" button */}
-        <div className="mt-10 flex justify-center">
-          <button
-            type="button"
-            onClick={() => setActive(0)}
-            className="btn-gold"
-          >
-            See All Photos
-          </button>
-        </div>
+            <div
+              ref={stripRef}
+              className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {images.map((img, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setActive(i)}
+                  aria-label={`Open image: ${img.alt}`}
+                  className="group relative aspect-[4/3] w-[240px] flex-shrink-0 snap-start overflow-hidden rounded-2xl bg-ink/5 shadow-soft outline-none md:w-[320px]"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    sizes="(max-width: 768px) 55vw, 25vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  {/* Hover overlay */}
+                  <span className="absolute inset-0 flex items-end bg-gradient-to-t from-ink/55 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <span className="p-4 text-left text-xs font-medium text-cream">
+                      {img.alt}
+                    </span>
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            {/* Desktop scroll arrows (hidden on mobile) */}
+            <button
+              type="button"
+              onClick={() => scrollStrip(-1)}
+              aria-label="Scroll photos left"
+              className="absolute left-2 top-1/2 hidden h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-cream/90 text-ink shadow-soft backdrop-blur-sm transition-colors hover:bg-gold hover:text-cream md:grid"
+            >
+              <ArrowLeftIcon width={18} height={18} />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollStrip(1)}
+              aria-label="Scroll photos right"
+              className="absolute right-2 top-1/2 hidden h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-cream/90 text-ink shadow-soft backdrop-blur-sm transition-colors hover:bg-gold hover:text-cream md:grid"
+            >
+              <ArrowRightIcon width={18} height={18} />
+            </button>
+          </div>
+
+          {/* Counter indicator */}
+          <div className="mt-4 flex justify-center">
+            <span className="rounded-full bg-ink/5 px-3 py-1 text-xs font-medium text-ink/60">
+              {images.length} photos
+            </span>
+          </div>
+        </motion.div>
       </div>
 
       <Lightbox
