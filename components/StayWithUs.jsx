@@ -26,7 +26,7 @@ export default function StayWithUs() {
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <div className="grid grid-cols-1 gap-3 overflow-y-auto auto-rows-[150px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid-cols-2 lg:max-h-[520px] lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-3 auto-rows-[150px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden max-sm:[&>*:nth-child(n+4)]:hidden sm:grid-cols-2 lg:max-h-[520px] lg:overflow-y-auto lg:grid-cols-3">
               {roomImages.map((img, i) => (
                 <button
                   key={i}
@@ -45,6 +45,17 @@ export default function StayWithUs() {
                   <span className="absolute inset-0 bg-cream/0 transition-colors duration-300 group-hover:bg-cream/5" />
                 </button>
               ))}
+            </div>
+
+            {/* Mobile only: show all photos in the lightbox */}
+            <div className="mt-4 flex justify-center sm:hidden">
+              <button
+                type="button"
+                onClick={() => setActive(0)}
+                className="btn-green w-full sm:w-auto"
+              >
+                View All {roomImages.length} Photos
+              </button>
             </div>
           </motion.div>
 

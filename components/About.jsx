@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/data/siteConfig";
 import { ValueIcon } from "./Icons";
 
@@ -17,6 +18,10 @@ export const reveal = {
 
 export default function About() {
   const { about } = siteConfig;
+  const [expanded, setExpanded] = useState(false);
+  // First two paragraphs are always visible on mobile; the rest toggle.
+  const firstParagraphs = about.story.slice(0, 2);
+  const restParagraphs = about.story.slice(2);
 
   return (
     <section id="about" className="section">
@@ -81,7 +86,49 @@ export default function About() {
             </h2>
             <p className="mt-4 text-ink/70 md:text-lg">{about.subtitle}</p>
 
-            <div className="mt-6 space-y-4">
+            {/* Story — desktop shows the full text; mobile collapses to 2 paragraphs with Read More */}
+            <div className="mt-6 space-y-4 md:hidden">
+              {/* First two paragraphs always visible */}
+              {firstParagraphs.map((paragraph, i) => (
+                <p key={i} className="text-ink/75">
+                  {paragraph}
+                </p>
+              ))}
+
+              {/* Remaining paragraphs animate open/closed */}
+              <AnimatePresence initial={false}>
+                {restParagraphs.length > 0 && (
+                  <motion.div
+                    key="mobile-rest"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: expanded ? "auto" : 0, opacity: 1 }}
+                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="space-y-4">
+                      {restParagraphs.map((paragraph, i) => (
+                        <p key={i} className="text-ink/75">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {restParagraphs.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => setExpanded((v) => !v)}
+                  className="btn-gold mt-2 w-full sm:w-auto"
+                >
+                  {expanded ? "Read Less" : "Read More"}
+                </button>
+              )}
+            </div>
+
+            {/* Desktop: full story, no truncation */}
+            <div className="mt-6 hidden space-y-4 md:block">
               {about.story.map((paragraph, i) => (
                 <p key={i} className="text-ink/75">
                   {paragraph}
