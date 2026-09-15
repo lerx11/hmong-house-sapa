@@ -2,11 +2,12 @@
 
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { siteConfig } from "@/data/siteConfig";
-import { ArrowRightIcon, ArrowLeftIcon, CloseIcon } from "./Icons";
+import { ArrowRightIcon, ArrowLeftIcon } from "./Icons";
 import { reveal } from "./About";
 import Lightbox, { useLightbox } from "./Lightbox";
+import PhotoGridOverlay from "./PhotoGridOverlay";
 
 // -------- Home page gallery (horizontal scroll strip) --------
 export default function Gallery() {
@@ -130,7 +131,7 @@ export default function Gallery() {
       </div>
 
       {/* Fullscreen grid overlay (Gallery only) */}
-      <GalleryGridOverlay
+      <PhotoGridOverlay
         open={gridOpen}
         images={images}
         onClose={() => setGridOpen(false)}
@@ -150,65 +151,13 @@ export default function Gallery() {
   );
 }
 
-// Fullscreen grid of all gallery photos. Clicking a photo opens the single
-// lightbox (rendered by the parent); X / Esc closes only this grid overlay.
-function GalleryGridOverlay({ open, images, onClose, onSelect }) {
-  return (
-    <AnimatePresence>
-      {open && (
-        <motion.div
-          key="gallery-grid"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-[55] bg-ink/95 backdrop-blur-sm"
-        >
-          {/* Close button */}
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close photo grid"
-            className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full bg-cream/10 text-cream transition-colors hover:bg-cream/20"
-          >
-            <CloseIcon />
-          </button>
-
-          {/* Scrollable grid : 2 cols mobile, 3 cols desktop */}
-          <div className="h-full overflow-y-auto p-4 pt-20 sm:px-6 md:px-10">
-            <div className="mx-auto grid max-w-6xl grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
-              {images.map((img, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => onSelect(i)}
-                  aria-label={`Open image: ${img.alt}`}
-                  className="group relative aspect-[4/3] overflow-hidden rounded-xl bg-cream/10 outline-none"
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    sizes="(max-width: 768px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                </button>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-}
-
-// -------- Tour page photo gallery (horizontal scroll strip + lightbox) --------
+// -------- Tour page photo gallery (horizontal scroll strip + grid overlay) --------
 // Exported separately so the server-component tour page can import it (it's a
 // Client Component via the "use client" directive at the top of this file).
 export function TourPhotoGallery({ images = [], tourName = "" }) {
   const { active, setActive, close, next, prev, current, normalized } =
     useLightbox(images, tourName);
+  const [gridOpen, setGridOpen] = useState(false);
   const stripRef = useRef(null);
 
   if (!normalized.length) return null;
@@ -231,7 +180,7 @@ export function TourPhotoGallery({ images = [], tourName = "" }) {
             <button
               key={i}
               type="button"
-              onClick={() => setActive(i)}
+              onClick={() => setGridOpen(true)}
               aria-label={`Open image: ${img.alt}`}
               className="group relative aspect-[4/3] w-[240px] flex-shrink-0 snap-start overflow-hidden rounded-2xl bg-ink/5 outline-none md:w-[280px]"
             >
@@ -265,13 +214,30 @@ export function TourPhotoGallery({ images = [], tourName = "" }) {
           <ArrowRightIcon width={18} height={18} />
         </button>
 
-        {/* Counter indicator */}
-        <span className="pointer-events-none absolute bottom-4 right-3 rounded-full bg-cream/90 px-3 py-1 text-xs font-medium text-ink backdrop-blur-sm">
-          {normalized.length} photos
-        </span>
+        {/* Counter + View All button */}
+        <div className="absolute bottom-4 right-3 flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setGridOpen(true)}
+            className="rounded-full bg-rice px-3 py-1 text-xs font-semibold text-cream transition-colors hover:bg-rice/90"
+          >
+            View All Photos
+          </button>
+          <span className="rounded-full bg-cream/90 px-3 py-1 text-xs font-medium text-ink backdrop-blur-sm">
+            {normalized.length} photos
+          </span>
+        </div>
       </div>
 
-      {/* Shared lightbox */}
+      {/* Fullscreen grid overlay for this tour's photos */}
+      <PhotoGridOverlay
+        open={gridOpen}
+        images={normalized}
+        onClose={() => setGridOpen(false)}
+        onSelect={setActive}
+      />
+
+      {/* Shared lightbox (opens above the grid) */}
       <Lightbox
         current={current}
         active={active}
