@@ -213,20 +213,20 @@ export function TourPhotoGallery({ images = [], tourName = "" }) {
         >
           <ArrowRightIcon width={18} height={18} />
         </button>
+      </div>
 
-        {/* Counter + View All button */}
-        <div className="absolute bottom-4 right-3 flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => setGridOpen(true)}
-            className="rounded-full bg-rice px-3 py-1 text-xs font-semibold text-cream transition-colors hover:bg-rice/90"
-          >
-            View All Photos
-          </button>
-          <span className="rounded-full bg-cream/90 px-3 py-1 text-xs font-medium text-ink backdrop-blur-sm">
-            {normalized.length} photos
-          </span>
-        </div>
+      {/* Counter + View All button (below the strip; centered on mobile, right on desktop) */}
+      <div className="mt-4 flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
+        <button
+          type="button"
+          onClick={() => setGridOpen(true)}
+          className="rounded-full bg-rice px-4 py-2 text-sm font-semibold text-cream transition-colors hover:bg-rice/90"
+        >
+          View All Photos
+        </button>
+        <span className="rounded-full bg-ink/5 px-3 py-1 text-xs font-medium text-ink/60">
+          {normalized.length} photos
+        </span>
       </div>
 
       {/* Fullscreen grid overlay for this tour's photos */}

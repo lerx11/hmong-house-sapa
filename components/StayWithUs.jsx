@@ -1,11 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { siteConfig, buildWhatsappLink } from "@/data/siteConfig";
 import { AmenityIcon, WhatsAppIcon } from "./Icons";
 import { reveal } from "./About";
 import Lightbox, { useLightbox } from "./Lightbox";
+import PhotoGridOverlay from "./PhotoGridOverlay";
 
 export default function StayWithUs() {
   const { stay } = siteConfig;
@@ -14,6 +16,7 @@ export default function StayWithUs() {
   );
   const { active, setActive, close, next, prev, current, normalized: roomImages } =
     useLightbox(stay.images);
+  const [gridOpen, setGridOpen] = useState(false);
 
   return (
     <section id="stay" className="section">
@@ -31,7 +34,7 @@ export default function StayWithUs() {
                 <button
                   key={i}
                   type="button"
-                  onClick={() => setActive(i)}
+                  onClick={() => setGridOpen(true)}
                   aria-label={`Open image: ${img.alt}`}
                   className="group relative block h-full w-full overflow-hidden rounded-2xl bg-ink/5 outline-none"
                 >
@@ -47,11 +50,11 @@ export default function StayWithUs() {
               ))}
             </div>
 
-            {/* Mobile only: show all photos in the lightbox */}
+            {/* Mobile only: show all photos in the grid overlay */}
             <div className="mt-4 flex justify-center sm:hidden">
               <button
                 type="button"
-                onClick={() => setActive(0)}
+                onClick={() => setGridOpen(true)}
                 className="btn-green w-full sm:w-auto"
               >
                 View All {roomImages.length} Photos
@@ -108,6 +111,15 @@ export default function StayWithUs() {
         </div>
       </div>
 
+      {/* Fullscreen grid overlay of all room photos */}
+      <PhotoGridOverlay
+        open={gridOpen}
+        images={roomImages}
+        onClose={() => setGridOpen(false)}
+        onSelect={setActive}
+      />
+
+      {/* Single-photo lightbox (opens above the grid) */}
       <Lightbox
         current={current}
         active={active}
