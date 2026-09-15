@@ -26,14 +26,14 @@ export default function StayWithUs() {
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <div className="grid grid-cols-1 gap-3 overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid-cols-2 lg:max-h-[500px] lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-3 overflow-y-auto auto-rows-[150px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid-cols-2 lg:max-h-[520px] lg:grid-cols-3">
               {roomImages.map((img, i) => (
                 <button
                   key={i}
                   type="button"
                   onClick={() => setActive(i)}
                   aria-label={`Open image: ${img.alt}`}
-                  className="group relative block w-full aspect-[4/3] overflow-hidden rounded-2xl bg-ink/5 outline-none"
+                  className="group relative block h-full w-full overflow-hidden rounded-2xl bg-ink/5 outline-none"
                 >
                   <Image
                     src={img.src}
