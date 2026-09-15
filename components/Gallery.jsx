@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/data/siteConfig";
@@ -199,9 +199,11 @@ export default function Gallery() {
   );
 }
 
-// -------- Tour page photo gallery (featured + grid, with lightbox) --------
+// -------- Tour page photo gallery (horizontal scroll strip + lightbox) --------
 // Exported separately so the server-component tour page can import it (it's a
 // Client Component via the "use client" directive at the top of this file).
+// The keyframe/state logic from useLightbox is reused (keyboard nav is React-side,
+// so it also works here without touching page.js).
 export function TourPhotoGallery({ images = [], tourName = "" }) {
   const {
     active,
@@ -212,70 +214,173 @@ export function TourPhotoGallery({ images = [], tourName = "" }) {
     current,
     normalized,
   } = useLightbox(images, tourName);
+  const stripRef = useRef(null);
 
   if (!normalized.length) return null;
 
-  const featured = normalized[0];
-  const rest = normalized.slice(1);
+  // Smoothly scroll the strip by roughly one card width.
+  const scrollStrip = (dir) => {
+    const el = stripRef.current;
+    if (el) el.scrollBy({ left: dir * 312, behavior: "smooth" });
+  };
 
   return (
     <>
-      <div className="w-full space-y-4">
-        {/* Featured image — first one, full width */}
-        {featured && (
-          <button
-            type="button"
-            onClick={() => setActive(0)}
-            aria-label={`Open image: ${featured.alt}`}
-            className="group relative block w-full overflow-hidden rounded-3xl shadow-soft aspect-[16/9] bg-ink/5"
-          >
-            <Image
-              src={featured.src}
-              alt={featured.alt}
-              fill
-              sizes="100vw"
-              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-            />
-            <span className="absolute inset-0 bg-gradient-to-t from-ink/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-          </button>
-        )}
+      {/* Horizontal scrollable strip */}
+      <div className="relative">
+        <div
+          ref={stripRef}
+          className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {normalized.map((img, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setActive(i)}
+              aria-label={`Open image: ${img.alt}`}
+              className="group relative aspect-[4/3] w-[240px] flex-shrink-0 snap-start overflow-hidden rounded-2xl bg-ink/5 outline-none md:w-[280px]"
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                sizes="(max-width: 768px) 55vw, 25vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <span className="absolute inset-0 bg-cream/0 transition-colors duration-300 group-hover:bg-cream/5" />
+            </button>
+          ))}
+        </div>
 
-        {/* Thumbnails: 2 cols on mobile, 3 cols on desktop */}
-        {rest.length > 0 && (
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-            {rest.map((img, idx) => {
-              // The real index in the full normalized array is idx + 1
-              const realIndex = idx + 1;
-              return (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() => setActive(realIndex)}
-                  aria-label={`Open image: ${img.alt}`}
-                  className="group relative block w-full overflow-hidden rounded-2xl shadow-soft aspect-[4/3] bg-ink/5"
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    sizes="(max-width: 768px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                </button>
-              );
-            })}
-          </div>
-        )}
+        {/* Desktop scroll arrows (hidden on mobile) */}
+        <button
+          type="button"
+          onClick={() => scrollStrip(-1)}
+          aria-label="Scroll photos left"
+          className="absolute left-2 top-1/2 hidden h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-cream/90 text-ink shadow-soft backdrop-blur-sm transition-colors hover:bg-gold hover:text-cream md:grid"
+        >
+          <ArrowLeftIcon width={18} height={18} />
+        </button>
+        <button
+          type="button"
+          onClick={() => scrollStrip(1)}
+          aria-label="Scroll photos right"
+          className="absolute right-2 top-1/2 hidden h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-cream/90 text-ink shadow-soft backdrop-blur-sm transition-colors hover:bg-gold hover:text-cream md:grid"
+        >
+          <ArrowRightIcon width={18} height={18} />
+        </button>
+
+        {/* Counter indicator */}
+        <span className="pointer-events-none absolute bottom-4 right-3 rounded-full bg-cream/90 px-3 py-1 text-xs font-medium text-ink backdrop-blur-sm">
+          {normalized.length} photos
+        </span>
       </div>
 
-      <Lightbox
-        current={current}
+      {/* Lightbox with counter, touch swipe and click-outside close */}
+      <TourLightbox
         active={active}
+        current={current}
+        total={normalized.length}
         close={close}
         next={next}
         prev={prev}
       />
     </>
+  );
+}
+
+// Fullscreen lightbox for the tour gallery. Keyboard navigation (Esc / arrows)
+// is handled by useLightbox's keydown listener and applies to this modal too.
+function TourLightbox({ active, current, total, close, next, prev }) {
+  // Track the horizontal swipe distance for touch support.
+  const touchStartX = useRef(null);
+
+  return (
+    <AnimatePresence>
+      {current && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-ink/85 p-4 backdrop-blur-sm"
+          onClick={close}
+        >
+          {/* Close button */}
+          <button
+            type="button"
+            onClick={close}
+            aria-label="Close lightbox"
+            className="absolute right-4 top-4 grid h-11 w-11 place-items-center rounded-full bg-cream/10 text-cream transition-colors hover:bg-cream/20"
+          >
+            <CloseIcon />
+          </button>
+
+          {/* Prev (desktop) */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              prev();
+            }}
+            aria-label="Previous image"
+            className="absolute left-2 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-cream/10 text-cream transition-colors hover:bg-cream/20 sm:left-4"
+          >
+            <ArrowLeftIcon />
+          </button>
+
+          {/* Image (captures touch for swipe) */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.25 }}
+              className="relative max-h-[85vh] max-w-5xl"
+              onClick={(e) => e.stopPropagation()}
+              onTouchStart={(e) => {
+                touchStartX.current = e.touches[0].clientX;
+              }}
+              onTouchEnd={(e) => {
+                if (touchStartX.current === null) return;
+                const dx = e.changedTouches[0].clientX - touchStartX.current;
+                touchStartX.current = null;
+                if (dx < -50) next();
+                if (dx > 50) prev();
+              }}
+            >
+              <Image
+                src={current.src}
+                alt={current.alt}
+                width={1200}
+                height={900}
+                className="max-h-[85vh] w-auto rounded-2xl object-contain"
+              />
+              <p className="mt-3 text-center text-sm text-cream/80">
+                {current.alt}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Next (desktop) */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              next();
+            }}
+            aria-label="Next image"
+            className="absolute right-2 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-cream/10 text-cream transition-colors hover:bg-cream/20 sm:right-4"
+          >
+            <ArrowRightIcon />
+          </button>
+
+          {/* Counter 1 / N */}
+          <span className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-cream/15 px-3 py-1 text-xs font-medium text-cream backdrop-blur-sm">
+            {active + 1} / {total}
+          </span>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
